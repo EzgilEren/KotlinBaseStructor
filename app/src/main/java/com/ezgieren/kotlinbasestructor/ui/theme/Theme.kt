@@ -1,6 +1,5 @@
 package com.ezgieren.kotlinbasestructor.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -10,6 +9,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.material3.*
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -53,6 +53,20 @@ fun KotlinBaseStructorTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        content = content
+    )
+}
+
+@Composable
+fun BaseProjectTheme(
+    darkTheme: Boolean = false,
+    content: @Composable () -> Unit
+) {
+    val colors = if (darkTheme) darkColorScheme() else lightColorScheme()
+
+    MaterialTheme(
+        colorScheme = colors,
+        typography = Typography(),
         content = content
     )
 }

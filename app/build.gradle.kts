@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt.android)
-    id("kotlin-kapt") // for Hilt
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -21,14 +21,30 @@ android {
             useSupportLibrary = true
         }
         // API key added in BuildConfig
-        buildConfigField("String", "API_KEY", "\"${project.properties["API_KEY"]}\"")
-        buildConfigField("String", "BASE_URL", "\"${project.properties["BASE_URL"]}\"")
+        buildConfigField("String", "API_KEY", project.properties["API_KEY"] as String)
+        buildConfigField("String", "BASE_URL", project.properties["BASE_URL"] as String)
     }
 
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
     buildFeatures {
-        compose = true // Jetpack Compose etkinleştirilmesi
+        buildConfig = true
+        compose = true
     }
-
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.3"
     }
@@ -47,7 +63,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.hilt.navigation.compose)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     // Retrofit & Gson for API calls
     implementation(libs.retrofit)
