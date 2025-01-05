@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt.android)
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -20,6 +20,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
         // API key added in BuildConfig
         buildConfigField("String", "API_KEY", project.properties["API_KEY"] as String)
         buildConfigField("String", "BASE_URL", project.properties["BASE_URL"] as String)
@@ -34,34 +35,41 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = "17"
     }
+
     buildFeatures {
         buildConfig = true
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.3"
     }
 }
 
 dependencies {
+    // AndroidX Core
+    implementation(libs.androidx.core.ktx)
+
     // Compose Libraries
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.tooling)
+    implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.animation)
+    implementation(libs.androidx.activity.compose)
 
     // Hilt for Dependency Injection
     implementation(libs.hilt.android)
-    implementation(libs.androidx.material3.android)
     implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
 
@@ -75,7 +83,8 @@ dependencies {
 
     // ViewModel & LiveData
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
     // Coil (Image Loading)
     implementation(libs.coil.compose)
@@ -84,10 +93,11 @@ dependencies {
     implementation(libs.okhttp.logging.interceptor)
 
     // Navigation
-    implementation(libs.navigation.compose)
+    implementation(libs.androidx.navigation)
 
     // Testing Libraries
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.ui.test.junit4)
 }
