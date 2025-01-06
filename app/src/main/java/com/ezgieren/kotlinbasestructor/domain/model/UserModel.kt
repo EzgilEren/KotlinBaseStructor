@@ -1,4 +1,4 @@
-package com.ezgieren.kotlinbasestructor.model
+package com.ezgieren.kotlinbasestructor.domain.model
 
 data class UserModel(
     val id: Int,

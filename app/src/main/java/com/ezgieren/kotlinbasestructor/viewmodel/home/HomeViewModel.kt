@@ -1,4 +1,4 @@
-package com.ezgieren.kotlinbasestructor.viewmodel
+package com.ezgieren.kotlinbasestructor.viewmodel.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

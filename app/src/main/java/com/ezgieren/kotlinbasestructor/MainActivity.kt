@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.ezgieren.kotlinbasestructor.ui.theme.BaseProjectTheme
-import com.ezgieren.kotlinbasestructor.ui.view.HomeScreen
+import com.ezgieren.kotlinbasestructor.ui.home.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.ezgieren.kotlinbasestructor.ui.view
+package com.ezgieren.kotlinbasestructor.ui.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -12,8 +12,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.ezgieren.kotlinbasestructor.viewmodel.HomeViewModel
 import com.ezgieren.kotlinbasestructor.util.Resource
+import com.ezgieren.kotlinbasestructor.viewmodel.home.HomeViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
