@@ -1,8 +1,9 @@
 package com.ezgieren.kotlinbasestructor.di
 
-import com.ezgieren.kotlinbasestructor.BuildConfig
-import com.ezgieren.kotlinbasestructor.data.remote.api.ApiService
-import com.ezgieren.kotlinbasestructor.data.repository.BaseRepository
+import com.ezgieren.kotlinbasestructor.data.remote.api.ExampleApiService
+import com.ezgieren.kotlinbasestructor.data.remote.api.PostApiService
+import com.ezgieren.kotlinbasestructor.data.repository.ExampleRepository
+import com.ezgieren.kotlinbasestructor.data.repository.PostRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,20 +20,32 @@ object AppModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl("https://jsonplaceholder.typicode.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
+    fun provideExampleApiService(retrofit: Retrofit): ExampleApiService {
+        return retrofit.create(ExampleApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideBaseRepository(apiService: ApiService): BaseRepository {
-        return BaseRepository(apiService)
+    fun providePostApiService(retrofit: Retrofit): PostApiService {
+        return retrofit.create(PostApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideExampleRepository(apiService: ExampleApiService): ExampleRepository {
+        return ExampleRepository(apiService)
+    }
+
+    @Provides
+    @Singleton
+    fun providePostRepository(apiService: PostApiService): PostRepository {
+        return PostRepository(apiService)
     }
 }

@@ -14,8 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinBaseStructor"
-        tools:targetApi="31">
-        <activity
+        tools:targetApi="31"
+        android:enableOnBackInvokedCallback="true">
+    <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

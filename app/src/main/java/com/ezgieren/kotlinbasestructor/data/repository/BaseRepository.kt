@@ -1,13 +1,13 @@
 package com.ezgieren.kotlinbasestructor.data.repository
 
-import com.ezgieren.kotlinbasestructor.data.remote.api.ApiService
+import com.ezgieren.kotlinbasestructor.data.remote.api.ExampleApiService
 import com.ezgieren.kotlinbasestructor.data.remote.model.ExampleData
 import com.ezgieren.kotlinbasestructor.util.Constants
 import com.ezgieren.kotlinbasestructor.util.Resource
 import javax.inject.Inject
 
 class BaseRepository @Inject constructor(
-    private val apiService: ApiService
+    private val apiService: ExampleApiService
 ) {
     suspend fun fetchExampleData(param: String): Resource<List<ExampleData>> {
         return try {

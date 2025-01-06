@@ -1,4 +1,4 @@
 package com.ezgieren.kotlinbasestructor.viewmodel.details
 
-class DetailsViewModel {
+class DetailViewModel {
 }

@@ -1,24 +1,24 @@
 package com.ezgieren.kotlinbasestructor.data.repository
 
-import com.ezgieren.kotlinbasestructor.data.remote.api.ExampleApiService
-import com.ezgieren.kotlinbasestructor.data.remote.model.ExampleData
+import com.ezgieren.kotlinbasestructor.data.remote.api.PostApiService
+import com.ezgieren.kotlinbasestructor.data.remote.model.Post
 import com.ezgieren.kotlinbasestructor.util.Constants
 import com.ezgieren.kotlinbasestructor.util.Resource
 import javax.inject.Inject
 
-// Repository for ExampleData
-class ExampleRepository @Inject constructor(
-    private val apiService: ExampleApiService
+// Repository for Post
+class PostRepository @Inject constructor(
+    private val apiService: PostApiService
 ) {
-    suspend fun fetchExampleData(param: String): Resource<List<ExampleData>> {
+    suspend fun fetchPosts(): Resource<List<Post>> {
         return try {
-            val response = apiService.fetchExampleData(param)
+            val response = apiService.fetchPosts()
             if (response.isSuccessful) {
-                Resource.Success(response.body()?.data ?: emptyList())
+                Resource.Success(response.body() ?: emptyList())
             } else {
                 Resource.Error(
                     message = Constants.API_ERROR_MESSAGE,
-                    detailedMessage = response.body()?.message ?: Constants.NO_DETAILS
+                    detailedMessage = response.message()
                 )
             }
         } catch (e: Exception) {

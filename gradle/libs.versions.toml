@@ -39,6 +39,7 @@ animation = "1.7.6" # Jetpack Compose animation library
 mockk = "1.13.0" # Mockk for testing
 sqlcipher = "4.5.0" # Encrypted Room database support
 ksp = "1.9.10-1.0.13" # Kotlin Symbol Processing (KSP)
+splashscreen = "1.0.1"
 
 # =================================
 # Libraries
@@ -100,6 +101,9 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose"
 # Coroutines Utilities
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+
+# Splash
+splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }
 
 # Testing
 junit = { group = "junit", name = "junit", version.ref = "junit" }
