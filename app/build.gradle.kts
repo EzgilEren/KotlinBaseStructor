@@ -71,11 +71,17 @@ dependencies {
     // Hilt for Dependency Injection
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.testng)
     ksp(libs.hilt.compiler)
 
     // Retrofit & Gson for API calls
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    // Room for local database
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
     // Coroutine Support for background tasks
     implementation(libs.kotlinx.coroutines.core)
@@ -99,8 +105,19 @@ dependencies {
     implementation(libs.splashscreen)
 
     // Testing Libraries
-    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.ui.test.junit4)
+
+    // Unit test libraries
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.truth)
+    testImplementation(libs.coroutines.test)
+
+    // Room testing
+    testImplementation(libs.room.testing)
+
+    // Hilt testing
+    androidTestImplementation(libs.hilt.testing)
 }

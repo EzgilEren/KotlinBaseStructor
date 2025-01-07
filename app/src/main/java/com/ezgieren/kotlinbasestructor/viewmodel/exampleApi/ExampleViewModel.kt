@@ -2,8 +2,8 @@ package com.ezgieren.kotlinbasestructor.viewmodel.exampleApi
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ezgieren.kotlinbasestructor.data.remote.model.ExampleData
-import com.ezgieren.kotlinbasestructor.data.repository.ExampleRepository
+import com.ezgieren.kotlinbasestructor.data.local.entity.ExampleEntity
+import com.ezgieren.kotlinbasestructor.data.repository.ExampleRepositoryImpl
 import com.ezgieren.kotlinbasestructor.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,16 +14,16 @@ import javax.inject.Inject
 // ViewModel for ExampleData API
 @HiltViewModel
 class ExampleViewModel @Inject constructor(
-    private val repository: ExampleRepository
+    private val repository: ExampleRepositoryImpl
 ) : ViewModel() {
 
-    private val _dataState = MutableStateFlow<Resource<List<ExampleData>>>(Resource.Loading())
-    val dataState: StateFlow<Resource<List<ExampleData>>> get() = _dataState
+    private val _dataState = MutableStateFlow<Resource<List<ExampleEntity>>>(Resource.Loading())
+    val dataState: StateFlow<Resource<List<ExampleEntity>>> get() = _dataState
 
     fun fetchExampleData(param: String) {
         viewModelScope.launch {
             _dataState.value = Resource.Loading()
-            _dataState.value = repository.fetchExampleData(param)
+            _dataState.value = repository.fetchExamples(param)
         }
     }
 }

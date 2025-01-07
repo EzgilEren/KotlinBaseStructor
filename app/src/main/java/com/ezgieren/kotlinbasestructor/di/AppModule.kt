@@ -1,9 +1,10 @@
 package com.ezgieren.kotlinbasestructor.di
 
+import com.ezgieren.kotlinbasestructor.data.local.dao.ExampleDao
 import com.ezgieren.kotlinbasestructor.data.remote.api.ExampleApiService
 import com.ezgieren.kotlinbasestructor.data.remote.api.PostApiService
-import com.ezgieren.kotlinbasestructor.data.repository.ExampleRepository
-import com.ezgieren.kotlinbasestructor.data.repository.PostRepository
+import com.ezgieren.kotlinbasestructor.data.repository.ExampleRepositoryImpl
+import com.ezgieren.kotlinbasestructor.domain.repository.ExampleRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +21,7 @@ object AppModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
+            .baseUrl("https://jsonplaceholder.typicode.com/") // Örnek URL
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -37,15 +38,13 @@ object AppModule {
         return retrofit.create(PostApiService::class.java)
     }
 
-    @Provides
-    @Singleton
-    fun provideExampleRepository(apiService: ExampleApiService): ExampleRepository {
-        return ExampleRepository(apiService)
-    }
 
     @Provides
     @Singleton
-    fun providePostRepository(apiService: PostApiService): PostRepository {
-        return PostRepository(apiService)
+    fun provideExampleRepository(
+        apiService: ExampleApiService,
+        exampleDao: ExampleDao
+    ): ExampleRepository {
+        return ExampleRepositoryImpl(apiService, exampleDao)
     }
 }

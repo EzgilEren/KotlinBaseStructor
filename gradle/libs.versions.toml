@@ -21,7 +21,7 @@ activityCompose = "1.9.3" # Activity Compose integration
 composeBom = "2024.12.01" # Compose BOM (Bill of Materials)
 lifecycleViewmodelKtx = "2.8.7" # ViewModel KTX extensions
 material = "1.7.6" # Material components
-navigation = "2.7.0" # Navigation component
+navigation = "2.8.5" # Navigation component
 paging = "3.3.5" # Paging library
 retrofit = "2.11.0" # Retrofit for networking
 room = "2.6.1" # Room database
@@ -36,10 +36,14 @@ okhttp = "4.9.3" # OkHttp for HTTP client
 hiltNavigationCompose = "1.2.0" # Hilt navigation integration with Compose
 material3 = "1.3.1" # Material3 components
 animation = "1.7.6" # Jetpack Compose animation library
-mockk = "1.13.0" # Mockk for testing
+mockk = "1.13.5" # Mockk for testing
 sqlcipher = "4.5.0" # Encrypted Room database support
 ksp = "1.9.10-1.0.13" # Kotlin Symbol Processing (KSP)
 splashscreen = "1.0.1"
+testng = "6.9.6"
+truth = "1.1.5"
+coroutines-test = "1.6.4"
+hilt = "2.44"
 
 # =================================
 # Libraries
@@ -74,6 +78,7 @@ okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-i
 # Database
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 sqlcipher = { module = "net.zetetic:sqlite", version.ref = "sqlcipher" }
 
 # Jetpack DataStore (Optional)
@@ -111,7 +116,11 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-
+testng = { group = "org.testng", name = "testng", version.ref = "testng" }
+truth = { module = "com.google.truth:truth", version.ref = "truth" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines-test" }
+room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
+hilt-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 
 # =================================
 # Plugins
