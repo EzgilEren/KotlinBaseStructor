@@ -56,6 +56,11 @@ android {
 }
 
 dependencies {
+    // JUnit with exclusion for hamcrest-core
+    testImplementation(libs.junit) {
+        exclude(group = "org.hamcrest", module = "hamcrest-core")
+    }
+
     // AndroidX Core
     implementation(libs.androidx.core.ktx)
 
@@ -71,7 +76,6 @@ dependencies {
     // Hilt for Dependency Injection
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.testng)
     ksp(libs.hilt.compiler)
 
     // Retrofit & Gson for API calls
@@ -109,8 +113,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.ui.test.junit4)
 
-    // Unit test libraries
+    // Testing
     testImplementation(libs.junit)
+    testImplementation(libs.hamcrest)
     testImplementation(libs.mockk)
     testImplementation(libs.truth)
     testImplementation(libs.coroutines.test)

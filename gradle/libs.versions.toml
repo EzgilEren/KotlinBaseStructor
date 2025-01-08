@@ -11,6 +11,7 @@ javapoet = "1.13.0" # JavaPoet library
 kotlin = "1.9.10" # Kotlin language version
 coreKtx = "1.15.0" # Android Core KTX extensions
 junit = "4.13.2" # JUnit 4 for unit testing
+hamcrest = "2.2" # Hamcrest for testing
 junitVersion = "1.2.1" # AndroidX JUnit extensions
 espressoCore = "3.6.1" # Espresso for UI testing
 kotlinxCoroutinesAndroid = "1.8.1" # Coroutines for Android
@@ -39,11 +40,10 @@ animation = "1.7.6" # Jetpack Compose animation library
 mockk = "1.13.5" # Mockk for testing
 sqlcipher = "4.5.0" # Encrypted Room database support
 ksp = "1.9.10-1.0.13" # Kotlin Symbol Processing (KSP)
-splashscreen = "1.0.1"
-testng = "6.9.6"
-truth = "1.1.5"
-coroutines-test = "1.6.4"
-hilt = "2.44"
+splashscreen = "1.0.1" # Splash Screen
+truth = "1.1.5" # Truth for assertions in testing
+coroutines-test = "1.6.4" # Coroutines test utilities
+hilt = "2.44" # Hilt dependency injection framework
 
 # =================================
 # Libraries
@@ -112,11 +112,11 @@ splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "spla
 
 # Testing
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+hamcrest = { group = "org.hamcrest", name = "hamcrest", version.ref = "hamcrest" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-testng = { group = "org.testng", name = "testng", version.ref = "testng" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines-test" }
 room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
